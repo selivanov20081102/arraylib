@@ -46,3 +46,9 @@ if (BUILD_TESTING)
     target_compile_options(test_integration PRIVATE -UNDEBUG)
     add_test(NAME integration COMMAND test_integration)
 endif()
+
+# ---- Пример по варианту ----
+add_executable(variant_01 examples/variant_01.cpp)
+target_link_libraries(variant_01 PRIVATE arraylib)
+set_target_properties(variant_01 PROPERTIES BUILD_RPATH "$ORIGIN"
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
